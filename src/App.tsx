@@ -1,26 +1,25 @@
+import { ConnectedRouter } from 'connected-react-router';
 import React, { FC } from 'react';
-import logo from './logo.svg';
+import { Provider } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
+import PublicRouter from './components/public/PublicRouter/PublicRouter';
 import GlobalThemeProvider from './shared/globalStyles/provider';
+import { configureStore, history } from './shared/store';
+import './App.css';
+
+const store = configureStore();
 
 const App: FC = () => {
   return (
     <GlobalThemeProvider>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <Switch>
+            {/* <Route path="/user" component={UserRouter} /> */}
+            <Route path="/" component={PublicRouter} />
+          </Switch>
+        </ConnectedRouter>
+      </Provider>
     </GlobalThemeProvider>
   );
 };
