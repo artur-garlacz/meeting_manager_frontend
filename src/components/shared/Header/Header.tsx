@@ -1,21 +1,26 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/default-props-match-prop-types */
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable react/button-has-type */
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { SiteHeader } from './style';
-// import Logo from '../../../assets/Logo.svg';
+
 /**
+
  * Header Component should hold the menu trigger button.
  * The Menu Toggle state is maintained in the Layout Component.
  */
 
-interface IHeader {
+export interface IHeader {
   menuState: boolean;
   handleToggleSidebar: () => void;
 }
 
 const Header: FC<IHeader> = ({ menuState, handleToggleSidebar }: IHeader) => {
   return (
-    <SiteHeader>
+    <SiteHeader data-testid="PublicHeader">
       <div className="brand-icon">
         <Link to="/">
           <div className="icon" />
@@ -24,6 +29,7 @@ const Header: FC<IHeader> = ({ menuState, handleToggleSidebar }: IHeader) => {
       </div>
       <div>
         <button
+          data-testid="PublicHeaderBtn"
           className={`menu-trigger ${menuState ? 'menu-close' : ''}`}
           onClick={handleToggleSidebar}
         >
@@ -36,3 +42,12 @@ const Header: FC<IHeader> = ({ menuState, handleToggleSidebar }: IHeader) => {
   );
 };
 export default Header;
+
+Header.propTypes = {
+  menuState: PropTypes.bool.isRequired,
+  handleToggleSidebar: PropTypes.func.isRequired,
+};
+
+Header.defaultProps = {
+  menuState: false,
+};

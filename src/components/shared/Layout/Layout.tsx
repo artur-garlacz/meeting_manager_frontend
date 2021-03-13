@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Header from '../Header/Header';
 import SidebarNav from '../Sidebar/Sidebar';
 
-interface ILayoutProps {
+export interface ILayoutProps {
   children: React.ReactNode;
 }
 
@@ -16,7 +17,7 @@ const Layout = ({ children }: ILayoutProps) => {
   };
 
   return (
-    <Container>
+    <Container data-testid="Layout">
       <Header menuState={menuState} handleToggleSidebar={handleToggleSidebar} />
       <SidebarNav
         menuState={menuState}
@@ -28,6 +29,14 @@ const Layout = ({ children }: ILayoutProps) => {
 };
 
 export default Layout;
+
+Layout.propTypes = {
+  children: PropTypes.element,
+};
+
+Layout.defaultProps = {
+  children: <></>,
+};
 
 const Container = styled.div`
   padding-top: 50px;

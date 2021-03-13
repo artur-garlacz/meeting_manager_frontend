@@ -32,7 +32,6 @@ const SidebarNav: FC<ISidebarNav> = ({
 
   const menuTimeline = useRef<any>();
   useEffect(() => {
-    console.log(menuTimeline);
     menuTimeline.current = gsap.timeline({ paused: true });
     menuTimeline.current.fromTo(
       [sidebarMenuOverlay, menuLayer, sidebarMenu],
@@ -68,7 +67,6 @@ const SidebarNav: FC<ISidebarNav> = ({
   return (
     <>
       <SidebarNavigationOverlay
-        className="sidebarNavigationOverlay"
         ref={(el) => (sidebarMenuOverlay = el)}
         onKeyDown={handleToggleSidebar}
         onClick={handleToggleSidebar}
