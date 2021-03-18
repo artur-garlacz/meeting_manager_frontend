@@ -7,7 +7,9 @@ import SidebarNav from '../Sidebar/Sidebar';
 export interface ILayoutProps {
   children: React.ReactNode;
 }
-
+/*
+  Main Layout Component related to ...
+*/
 const Layout = ({ children }: ILayoutProps) => {
   const [menuState, setMenuState] = useState<boolean>(false);
 

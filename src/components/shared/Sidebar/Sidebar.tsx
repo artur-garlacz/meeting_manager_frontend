@@ -16,6 +16,10 @@ import {
   MenuLink,
 } from './style';
 
+/*
+  SidebaNav component to show menu in mobile version 
+*/
+
 interface ISidebarNav extends RouteComponentProps {
   menuState: boolean;
   handleToggleSidebar: () => void;
@@ -26,12 +30,13 @@ const SidebarNav: FC<ISidebarNav> = ({
   menuState,
   handleToggleSidebar,
 }: ISidebarNav) => {
-  let sidebarMenu: any = useRef<any>();
+  let sidebarMenu: any = useRef<any>(); // I know it shoudn't be any :)
   let sidebarMenuOverlay: any = useRef<any>();
   let menuLayer: any = useRef<any>();
 
   const menuTimeline = useRef<any>();
   useEffect(() => {
+    // initial gsap action
     menuTimeline.current = gsap.timeline({ paused: true });
     menuTimeline.current.fromTo(
       [sidebarMenuOverlay, menuLayer, sidebarMenu],
@@ -51,6 +56,7 @@ const SidebarNav: FC<ISidebarNav> = ({
   }, []);
 
   useEffect(() => {
+    // functions inside this scope will be invoked on first render and on every changing menuState
     if (menuTimeline !== null && menuTimeline.current !== null) {
       if (menuState) {
         menuTimeline.current.play();
@@ -61,9 +67,11 @@ const SidebarNav: FC<ISidebarNav> = ({
   }, [menuState]);
 
   useEffect(() => {
+    // action invoke on every event
     history.listen(() => handleToggleSidebar());
   });
 
+  // render jsx here
   return (
     <>
       <SidebarNavigationOverlay
@@ -83,19 +91,6 @@ const SidebarNav: FC<ISidebarNav> = ({
               <MenuLink to="/contact">Contact</MenuLink>
             </LinksWrapper>
           </SidebarTop>
-          {/* <div className="sidebar-bottom">
-            <ExtraLinks>
-              <li className="link-item">
-                <div className="link-title">Email</div>
-                <a href="mailto:example@gmail.com">example@gmail.com</a>
-              </li>
-              <li className="link-item">
-                <div className="link-title">Find Us</div>
-                <span>57, Arch Road</span>
-                <span>Middleton</span>
-              </li>
-            </ExtraLinks>
-          </div> */}
         </SidebarNavigator>
       </MenuWrapper>
     </>

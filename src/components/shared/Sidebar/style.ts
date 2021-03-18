@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+/*
+  All styles for SidebarNav component 
+*/
+
 export const SidebarNavigationOverlay = styled.div`
   position: fixed;
   top: 0;

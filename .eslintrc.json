@@ -47,7 +47,8 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "camelcase": [2, {"properties": "never"}],
     "react/jsx-one-expression-per-line": "off",
-    "no-use-before-define": "off"
+    "no-use-before-define": "off",
+    "eslint-disable no-return-await": "off"
   },
   "settings": {
     "import/resolver": {

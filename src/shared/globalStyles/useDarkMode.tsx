@@ -1,13 +1,17 @@
 /* eslint-disable no-unused-expressions */
 import { useEffect, useState } from 'react';
 
+/*
+  Custom hooks useDarkMode has created to manage dark/light mode inside app
+*/
+
 type IThemeMode = 'light' | 'dark';
 
 export const useDarkMode = () => {
-  const [theme, setTheme] = useState<IThemeMode>('light');
+  const [theme, setTheme] = useState<IThemeMode>('light'); // thse type state
   const [mountedComponent, setMountedComponent] = useState(false);
   const setMode = (mode: IThemeMode): void => {
-    window.localStorage.setItem('theme', mode);
+    // function changing themeMode
     setTheme(mode);
   };
 
@@ -16,8 +20,7 @@ export const useDarkMode = () => {
   };
 
   useEffect(() => {
-    // const localTheme: null | string = window.localStorage.getItem('theme');
-    // localTheme && localTheme !== null ? setTheme(localTheme) : setMode('light');
+    // initial mounting
     setMountedComponent(true);
   }, []);
 
