@@ -8,7 +8,7 @@ export interface ILayoutProps {
   children: React.ReactNode;
 }
 /*
-  Main Layout Component related to ...
+  Main Layout Component wrap whole component, manipulate sidebar
 */
 const Layout = ({ children }: ILayoutProps) => {
   const [menuState, setMenuState] = useState<boolean>(false);

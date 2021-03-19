@@ -1,50 +1,47 @@
 import { createActionAndReducer } from 'react-async-action-reducer';
-import * as publicApi from '../../../shared/publicApi'
+import * as publicApi from '../../../shared/publicApi';
+import {
+  ICreateAccountCredentials,
+  IVerifyResponse,
+  IVerifyToken,
+} from '../../../shared/types';
 
-
-interface IResponse {
-    status: any;
-}
-
-export type IAuthenticationRequest = any;
-
-const signup = createActionAndReducer<IAuthenticationRequest, any>({
-    prefix: 'pub.signup',
-    dataToKey: (data?: any): string => `${data?.email}`,
-    perform: async (data?: any): Promise<any> => {
-        return await publicApi.createAccount(data as any);
-    },
+const signup = createActionAndReducer<ICreateAccountCredentials, any>({
+  prefix: 'pub.signup',
+  dataToKey: (data?: ICreateAccountCredentials): string => `${data?.email}`,
+  perform: async (data?: ICreateAccountCredentials): Promise<any> => {
+    const result = await publicApi.createAccount(
+      data as ICreateAccountCredentials,
+    );
+    return result;
+  },
 });
 
-// const confirm = createActionAndReducer<IVerifyToken, any>({
-//     prefix: 'pub.confirm',
-//     dataToKey: (data?: IVerifyToken): string => `${data?.token}`,
-//     perform: async (data?: IVerifyToken): Promise<any> => {
-//         return await publicApi.getVerifyUser(data as IVerifyToken);
-//     },
-// });
+const confirm = createActionAndReducer<IVerifyToken, IVerifyResponse>({
+  prefix: 'pub.confirm',
+  dataToKey: (data?: IVerifyToken): string => `${data?.token}`,
+  perform: async (data?: IVerifyToken): Promise<IVerifyResponse> => {
+    const result = await publicApi.getVerifyUser(data as IVerifyToken);
+    return result;
+  },
+});
 
-// const invitation = createActionAndReducer<IVerifyToken, any>({
-//     prefix: 'pub.invitation',
-//     dataToKey: (data?: IVerifyToken): string => `${data?.token}`,
-//     perform: async (data?: IVerifyToken): Promise<any> => {
-//         return await publicApi.getInvitedUser(data as IVerifyToken);
-//     },
-// });
-
-// const invitationSignup = createActionAndReducer<ICreateInvitedUser, any>({
-//     prefix: 'pub.invitationSignup',
-//     dataToKey: (data?: ICreateInvitedUser): string => `${data?.token}`,
-//     perform: async (data?: ICreateInvitedUser): Promise<any> => {
-//         return await publicApi.createInvitedAccount(data?.user as ICreateAccountCredentials, data?.token as string);
-//     },
-// });
+const invitation = createActionAndReducer<IVerifyToken, IVerifyResponse>({
+  prefix: 'pub.invitation',
+  dataToKey: (data?: IVerifyToken): string => `${data?.token}`,
+  perform: async (data?: IVerifyToken): Promise<IVerifyResponse> => {
+    const result = await publicApi.getInvitedUser(data as IVerifyToken);
+    return result;
+  },
+});
 
 const actions = {
-    reducers: {
-        ...signup.reducer,
-    },
-    signup,
-}
+  reducers: {
+    ...signup.reducer,
+    ...confirm.reducer,
+    ...invitation.reducer,
+  },
+  signup,
+};
 
 export default actions;

@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
-
+/*
+  GlobalStyles to manage
+*/
 export const GlobalStyles = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.body};
@@ -7,4 +9,4 @@ export const GlobalStyles = createGlobalStyle`
     font-family: Tahoma, Helvetica, Arial, Roboto, sans-serif;
     transition: all 0.50s linear;
   }
-  `;
+`;

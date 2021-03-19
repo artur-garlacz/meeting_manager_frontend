@@ -1,12 +1,11 @@
 import { createActionAndReducer } from 'react-async-action-reducer';
 import * as publicApi from '../../../shared/publicApi';
 
-export type IAuthenticationRequest = any;
-
-const index = createActionAndReducer<IAuthenticationRequest, any>({
+const index = createActionAndReducer<undefined, {}>({
   prefix: 'pub.offers',
   perform: async (): Promise<any> => {
-    return await publicApi.getOffers();
+    const result = await publicApi.getOffers();
+    return result;
   },
 });
 
