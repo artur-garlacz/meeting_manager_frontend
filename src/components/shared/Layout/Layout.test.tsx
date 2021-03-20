@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-restricted-globals */
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import Layout, { ILayoutProps } from './Layout';
 import renderStoreUtils from '../../../shared/test-utils';

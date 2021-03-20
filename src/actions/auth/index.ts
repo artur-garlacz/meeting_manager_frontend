@@ -25,7 +25,6 @@ const authenticate = createActionAndReducer<
 >({
   prefix: 'auth.user',
   clearOtherData: ['user.userAccounts.list'],
-
   perform: async (
     data?: IAuthenticationRequest,
   ): Promise<IAuthenticateResponse | undefined> => {
@@ -39,6 +38,7 @@ const authenticate = createActionAndReducer<
       info = await userAuth.getUserInfo();
     } catch (e) {
       // ignore error
+      return undefined;
     }
     if (info !== undefined) {
       return info;
@@ -55,6 +55,7 @@ const authenticate = createActionAndReducer<
       );
       if (token === undefined) {
         throw new Error('unable to authenticate');
+        return undefined;
       }
       userAuth.setAuthToken(token);
       return await userAuth.getUserInfo();

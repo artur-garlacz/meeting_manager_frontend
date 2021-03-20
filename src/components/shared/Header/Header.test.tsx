@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable no-console */
-/* eslint-disable no-restricted-globals */
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
 import Header from './Header';

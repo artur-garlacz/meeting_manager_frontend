@@ -1,5 +1,9 @@
 {
     "action.save": "Save",
+    "action.logIn": "Log in",
     "action.saveNGonext": "Save and go next",
-    "action.preview": "Preview"
+    "action.preview": "Preview",
+    "form.field.isRequired": "This field is required",
+    "form.email.label": "E-mail",
+    "form.password.label": "Password"
   }

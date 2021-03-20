@@ -1,12 +1,14 @@
 import { publicAxios } from './authentication';
 import {
   ICreateAccountCredentials,
+  IPagePayload,
   IVerifyResponse,
   IVerifyToken,
 } from './types';
+import { IOffer } from './types/offers';
 
 // currently jsonplaceholder for mock test :)
-export const getOffers = async <T>(): Promise<T> => {
+export const getOffers = async (): Promise<IPagePayload<IOffer>> => {
   const res = await publicAxios.get(
     'https://jsonplaceholder.typicode.com/todos',
   );

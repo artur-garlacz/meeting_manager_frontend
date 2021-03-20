@@ -24,3 +24,11 @@ export type ILangTypes = 'pl' | 'en';
 export interface IEntry {
   id: number;
 }
+
+// pagination types
+export interface IPagePayload<T> {
+  page: number;
+  perPage: number;
+  itemsCount?: number;
+  items: T[];
+}

@@ -15,7 +15,6 @@ const LangProvider: React.FC<ILangProvider> = ({ children }: ILangProvider) => {
 
   return (
     <IntlProvider
-      textComponent={React.Fragment}
       locale="pl" // In next steps language will be dependant on user settings from redux store
       messages={messages.pl}
     >

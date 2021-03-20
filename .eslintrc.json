@@ -48,7 +48,11 @@
     "camelcase": [2, {"properties": "never"}],
     "react/jsx-one-expression-per-line": "off",
     "no-use-before-define": "off",
-    "eslint-disable no-return-await": "off"
+    "no-return-await": "off",
+    "react/jsx-props-no-spreading": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "consistent-return": "off",
+    "react/state-in-constructor": "off"
   },
   "settings": {
     "import/resolver": {
