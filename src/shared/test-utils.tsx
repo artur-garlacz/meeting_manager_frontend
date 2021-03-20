@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable no-console */
-/* eslint-disable no-restricted-globals */
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { ReactNode } from 'react';
 import { render } from '@testing-library/react';
 import { ConnectedRouter } from 'connected-react-router';
@@ -12,10 +8,7 @@ import { configureStore } from './store';
 const store = configureStore(); // create redux store
 const history = createBrowserHistory(); // create history connectedRouter
 
-// interface IStoreRouterUtils {
-//   children: ReactNode;
-// }
-
+// create base for testing
 const renderStoreUtils = (children: ReactNode) => {
   const utils = render(
     <Provider store={store}>

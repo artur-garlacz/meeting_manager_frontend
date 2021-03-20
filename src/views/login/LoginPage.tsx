@@ -5,6 +5,13 @@ import { Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { ILoginAccountCredentials } from '../../shared/types';
 import * as actions from '../../actions';
+import {
+  Button,
+  ErrorMessage,
+  FormGroup,
+  FormInput,
+  FormLabel,
+} from '../../components/shared/Form/style';
 
 interface IValuesErrors {
   email?: string;
@@ -40,44 +47,54 @@ const LoginPage: FC = () => {
 
         return errors;
       }}
-      render={({ submitError, handleSubmit, form, submitting }) => (
+      render={({ submitError, handleSubmit, submitting }) => (
         <form onSubmit={handleSubmit}>
           <Field name="email">
             {({ input, meta }) => (
-              <div>
-                <label>
+              <FormGroup>
+                <FormLabel>
                   <FormattedMessage id="form.email.label" />
-                </label>
-                <input {...input} type="email" placeholder="email" />
+                </FormLabel>
+                <FormInput
+                  {...input}
+                  isError={meta.error && meta.touched}
+                  type="email"
+                  placeholder="email"
+                />
                 {(meta.error || meta.submitError) && meta.touched && (
-                  <span>
+                  <ErrorMessage>
                     <FormattedMessage id={meta.error || meta.submitError} />
-                  </span>
+                  </ErrorMessage>
                 )}
-              </div>
+              </FormGroup>
             )}
           </Field>
           <Field name="password">
             {({ input, meta }) => (
-              <div>
-                <label>
+              <FormGroup>
+                <FormLabel>
                   <FormattedMessage id="form.password.label" />
-                </label>
-                <input {...input} type="password" placeholder="Password" />
+                </FormLabel>
+                <FormInput
+                  {...input}
+                  isError={meta.error && meta.touched}
+                  type="password"
+                  placeholder="Password"
+                />
                 {meta.error && meta.touched && (
-                  <span>
+                  <ErrorMessage>
                     <FormattedMessage id={meta.error} />
-                  </span>
+                  </ErrorMessage>
                 )}
-              </div>
+              </FormGroup>
             )}
           </Field>
           {submitError && <div className="error">{submitError}</div>}
-          <div className="buttons">
-            <button type="submit" disabled={submitting}>
+          <FormGroup>
+            <Button type="submit" disabled={submitting}>
               <FormattedMessage id="action.logIn" />
-            </button>
-          </div>
+            </Button>
+          </FormGroup>
         </form>
       )}
     />

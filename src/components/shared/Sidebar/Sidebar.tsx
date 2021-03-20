@@ -85,10 +85,9 @@ const SidebarNav: FC<ISidebarNav> = ({
           <SidebarTop>
             <LinksWrapper>
               <MenuLink to="/">Home</MenuLink>
-              <MenuLink to="/about">About</MenuLink>
-              <MenuLink to="/services">Services</MenuLink>
-              <MenuLink to="/gallery">Gallery</MenuLink>
-              <MenuLink to="/contact">Contact</MenuLink>
+              <MenuLink to="/login">Login</MenuLink>
+              <MenuLink to="/signup">Sign up</MenuLink>
+              <MenuLink to="/locals">Locals</MenuLink>
             </LinksWrapper>
           </SidebarTop>
         </SidebarNavigator>
