@@ -20,9 +20,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test --watchAll=false --maxWorkers=50% --collectCoverage --collectCoverageFrom=src/**/*.{ts,tsx} --collectCoverageFrom=!src/**/*.stories.tsx",
+    "test:coverage:open": "open coverage/lcov-report/index.html",
     "prepare": "./node_modules/.bin/husky install",
-    "lint-check": "./node_modules/.bin/eslint ./src/ --ext .js,.jsx,.ts,.tsx",
-    "lint": "yarn run lint-check --fix",
+    "typescript": "./node_modules/.bin/tsc --noEmit",
+    "lint": "./node_modules/.bin/eslint ./src/ --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "yarn run lint-check --fix",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,6 +47,8 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
     "autoprefixer": "^10.4.2",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
