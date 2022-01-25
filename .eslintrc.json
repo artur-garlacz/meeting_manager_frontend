@@ -1,0 +1,12 @@
+{
+    "extends": ["react-app", "react-app/jest", "plugin:tailwind/recommended"],
+    "plugins": ["prettier"],
+    "rules": {
+        "prettier/prettier": "error",
+        "no-restricted-globals": "off",
+        "no-loop-func": "off",
+        "@typescript-eslint/no-unused-vars": "error",
+        "react/jsx-newline": [2, {"prevent": false}],
+        "react/jsx-curly-brace-presence": [2, {"props": "always", "children": "never"}]
+    }
+}
